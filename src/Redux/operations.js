@@ -5,7 +5,7 @@ axios.defaults.baseURL = "https://64635d734dca1a66135ba7bc.mockapi.io";
 export const getUsers = createAsyncThunk("users/get", async (_, thunkAPI) => {
   try {
     const { data } = await axios.get("/users");
-    return data;
+    return data.sort((b, a) => a.followers - b.followers);
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

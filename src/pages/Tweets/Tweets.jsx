@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Tweet from "../../components/Tweet/Tweet";
 import Filter from "../../components/Filter/Filter";
-import { Notify } from "notiflix/build/notiflix-notify-aio";
 import s from "./Tweets.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,12 +39,6 @@ const Tweets = () => {
                 tweets={user.tweets}
               />
             ))}
-        {filter === "followings" &&
-          Notify.info(
-            `You have a ${
-              users.filter((user) => idies.includes(user.id)).length
-            } followings`
-          )}
         {filter === "follow" &&
           users
             .filter((user) => !idies.includes(user.id))
@@ -58,12 +51,6 @@ const Tweets = () => {
                 tweets={user.tweets}
               />
             ))}
-        {filter === "follow" &&
-          Notify.info(
-            `You have a ${
-              users.filter((user) => !idies.includes(user.id)).length
-            } tweets to follow`
-          )}
         {(filter === "all" || filter === "") &&
           users.map((user) => (
             <Tweet
@@ -74,8 +61,6 @@ const Tweets = () => {
               tweets={user.tweets}
             />
           ))}
-        {(filter === "all" || filter === "") &&
-          Notify.info(`You have a ${users.length} tweets`)}
       </ul>
     </div>
   );
