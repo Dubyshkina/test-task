@@ -1,19 +1,10 @@
-import { Outlet, Link } from "react-router-dom";
-
-import s from "./Layout.module.scss";
+import { Outlet } from "react-router-dom";
+import { Container } from "@mui/material";
 const Layout = () => {
   return (
-    <header>
-      <nav className={s.nav}>
-        <Link to="/" className={s.link}>
-          <button type="button" className={s.btn}>Home</button>
-        </Link>
-        <Link to="/tweets" className={s.link}>
-          <button type="button" className={s.btn}>Tweets</button>
-        </Link>
-      </nav>
+    <Container maxWidth='1280px'>
       <Outlet />
-    </header>
+    </Container>
   );
 };
 
